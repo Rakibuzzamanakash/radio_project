@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -39,9 +41,9 @@ class _AudioPageState extends State<AudioPage> {
 
 
   final BannerAd myBanner = BannerAd(
-    //adUnitId: Platform.isAndroid ? "ca-app-pub-3940256099942544/6300978111":"ca-app-pub-3940256099942544/2934735716",
-    adUnitId: "ca-app-pub-4591217605361158/2022229821",
-    //adUnitId: "ca-app-pub-3940256099942544/2934735716",
+    adUnitId: Platform.isAndroid ? "ca-app-pub-3940256099942544/6300978111":"ca-app-pub-3940256099942544/2934735716",
+    // adUnitId: "ca-app-pub-4591217605361158/2022229821",
+
     size: AdSize.largeBanner,
     request: AdRequest(),
     listener: BannerAdListener(

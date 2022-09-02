@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 
 import 'Api Call/Get_Audio_Category/get_audio_category_data.dart';
@@ -13,9 +14,11 @@ import 'Screens/home_page.dart';
 import 'Screens/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(const MyApp());
 }
-
+// ca-app-pub-4591217605361158~9545496626
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -51,8 +54,8 @@ class MyApp extends StatelessWidget {
 
                 //WebSiteView()
 
-                // HomePage()
-            SplashScreen()
+                HomePage()
+          // HomePageΩ
             //VideoShow()
 
             ),

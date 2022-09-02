@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   final BannerAd myBanner = BannerAd(
-    //adUnitId: Platform.isAndroid ? "ca-app-pub-3940256099942544/6300978111":"ca-app-pub-3940256099942544/2934735716",
-    adUnitId: Platform.isAndroid ? "ca-app-pub-3940256099942544/6300978111":"ca-app-pub-4591217605361158/2022229821",
+    adUnitId: Platform.isAndroid ? "ca-app-pub-3940256099942544/6300978111":"ca-app-pub-3940256099942544/2934735716",
+   // adUnitId: "ca-app-pub-4591217605361158/2022229821",
     //adUnitId: "ca-app-pub-3940256099942544/2934735716",
     size: AdSize.largeBanner,
     request: AdRequest(),
@@ -581,358 +581,362 @@ class _HomePageState extends State<HomePage> {
                             ),
                           )),
                 ),
-          Padding(
-            padding: EdgeInsets.all(8.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "News",
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    color: Colors.black,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => NewsApiLisrt()));
-                  },
-                  child: Text(
-                    "View All",
-                    style: TextStyle(
-                        fontSize: 15.sp,
-                        color: AppColors.appRedColor,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          newsModel.loading
-              ? Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  height: 100.h,
-                  child: Center(child: CircularProgressIndicator()),
-                )
-              : GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (builder) => NewsDetailScreen(
-                            dataDate: DateFormat.yMMMMd().format(
-                              TextData(
-                                  newsModel.post!.items![0].datePublished!),
-                            ),
-                            bodyText: newsModel.post!.items![0].contentText!,
-                            imgUrl: newsModel.post!.items![0].image!,
-                            titleText: newsModel.post!.items![0].title!,
-                            dateTime: DateFormat.jm().format(TextData(
-                                newsModel.post!.items![0].datePublished!)))));
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.all(8.w),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10.r),
-                      child: Container(
-                        height: 230.h,
-                        width: double.maxFinite,
-                        child: Stack(children: [
-                          Container(
-                              height: 230.h,
-                              width: double.maxFinite,
-                              child: Image.network(
-                                newsModel.post!.items![0].image!,
-                                fit: BoxFit.cover,
-                              )),
-                          Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                height: 80.h,
-                                width: double.maxFinite,
-                                decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.7)),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10.w, vertical: 10.h),
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        newsModel.post!.items![0].title
-                                            .toString(),
-                                        style: TextStyle(
-                                            fontSize: 12.sp,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            DateFormat.jm().format(TextData(
-                                                newsModel.post!.items![0]
-                                                    .datePublished!)),
-                                            style: TextStyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 5.w,
-                                          ),
-                                          Text(
-                                            DateFormat.yMMMMd().format(
-                                              TextData(newsModel.post!.items![0]
-                                                  .datePublished!),
-                                            ),
-                                            style: TextStyle(
-                                              fontSize: 10.sp,
-                                              color: Colors.grey,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ))
-                        ]),
-                      ),
-                    ),
-                  ),
-                ),
-          newsModel.loading
-              ? Container(
-                  color: Colors.grey,
-                )
-              : Row(
-                  children: [
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (builder) => NewsDetailScreen(
-                                  dataDate: DateFormat.yMMMMd().format(
-                                    TextData(newsModel
-                                        .post!.items![1].datePublished!),
-                                  ),
-                                  bodyText:
-                                      newsModel.post!.items![1].contentText!,
-                                  imgUrl: newsModel.post!.items![1].image!,
-                                  titleText: newsModel.post!.items![1].title!,
-                                  dateTime: DateFormat.jm().format(
-                                    TextData(
-                                      newsModel.post!.items![1].datePublished!,
-                                    ),
-                                  ))));
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.w),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.r),
-                            child: Container(
-                              height: 130.h,
-                              width: double.maxFinite,
-                              child: Stack(children: [
-                                Container(
-                                    height: 130.h,
-                                    width: double.maxFinite,
-                                    child: Image.network(
-                                      newsModel.post!.items![1].image!,
-                                      fit: BoxFit.fill,
-                                    )),
-                                Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      height: 45.h,
-                                      width: double.maxFinite,
-                                      decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.7)),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Container(
-                                              height: 20.h,
-                                              child: SingleChildScrollView(
-                                                child: Center(
-                                                  child: Text(
-                                                    newsModel
-                                                        .post!.items![1].title
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        fontSize: 13.sp,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                    maxLines: 2,
-                                                  ),
-                                                ),
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5.0, bottom: 5),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    DateFormat.jm().format(
-                                                        TextData(newsModel
-                                                            .post!
-                                                            .items![1]
-                                                            .datePublished!)),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5.w,
-                                                  ),
-                                                  Text(
-                                                    DateFormat.yMMMMd().format(
-                                                      TextData(newsModel
-                                                          .post!
-                                                          .items![1]
-                                                          .datePublished!),
-                                                    ),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                        ],
-                                      ),
-                                    ))
-                              ]),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (builder) => NewsDetailScreen(
-                                  dataDate: DateFormat.yMMMMd().format(
-                                    TextData(newsModel
-                                        .post!.items![2].datePublished!),
-                                  ),
-                                  bodyText:
-                                      newsModel.post!.items![2].contentText!,
-                                  imgUrl: newsModel.post!.items![2].image!,
-                                  titleText: newsModel.post!.items![2].title!,
-                                  dateTime: DateFormat.jm().format(TextData(
-                                      newsModel
-                                          .post!.items![2].datePublished!)))));
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.w),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10.r),
-                            child: Container(
-                              height: 130.h,
-                              width: double.maxFinite,
-                              child: Stack(children: [
-                                Container(
-                                    height: 130.h,
-                                    width: double.maxFinite,
-                                    child: Image.network(
-                                      newsModel.post!.items![2].image!,
-                                      fit: BoxFit.fill,
-                                    )),
-                                Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      height: 45.h,
-                                      width: double.maxFinite,
-                                      decoration: BoxDecoration(
-                                          color: Colors.black.withOpacity(0.7)),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Container(
-                                              height: 20.h,
-                                              child: SingleChildScrollView(
-                                                child: Center(
-                                                  child: Text(
-                                                    newsModel
-                                                        .post!.items![2].title
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        fontSize: 13.sp,
-                                                        color: Colors.white,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                    maxLines: 2,
-                                                  ),
-                                                ),
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5.0, bottom: 5),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    DateFormat.jm().format(
-                                                        TextData(newsModel
-                                                            .post!
-                                                            .items![2]
-                                                            .datePublished!)),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5.w,
-                                                  ),
-                                                  Text(
-                                                    DateFormat.yMMMMd().format(
-                                                      TextData(newsModel
-                                                          .post!
-                                                          .items![2]
-                                                          .datePublished!),
-                                                    ),
-                                                    style: TextStyle(
-                                                      fontSize: 10.sp,
-                                                      color: Colors.grey,
-                                                    ),
-                                                  ),
-                                                ],
-                                              )),
-                                        ],
-                                      ),
-                                    ))
-                              ]),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+
+          //
+          // Padding(
+          //   padding: EdgeInsets.all(8.w),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(
+          //         "News",
+          //         style: TextStyle(
+          //           fontSize: 18.sp,
+          //           color: Colors.black,
+          //         ),
+          //       ),
+          //       InkWell(
+          //         onTap: () {
+          //           Navigator.push(context,
+          //               MaterialPageRoute(builder: (context) => NewsApiLisrt()));
+          //         },
+          //         child: Text(
+          //           "View All",
+          //           style: TextStyle(
+          //               fontSize: 15.sp,
+          //               color: AppColors.appRedColor,
+          //               fontWeight: FontWeight.w600),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // newsModel.loading
+          //     ? Container(
+          //         padding: EdgeInsets.symmetric(horizontal: 8),
+          //         height: 100.h,
+          //         child: Center(child: CircularProgressIndicator()),
+          //       )
+          //     : GestureDetector(
+          //         onTap: () {
+          //           Navigator.of(context).push(MaterialPageRoute(
+          //               builder: (builder) => NewsDetailScreen(
+          //                   dataDate: DateFormat.yMMMMd().format(
+          //                     TextData(
+          //                         newsModel.post!.items![0].datePublished!),
+          //                   ),
+          //                   bodyText: newsModel.post!.items![0].contentText!,
+          //                   imgUrl: newsModel.post!.items![0].image!,
+          //                   titleText: newsModel.post!.items![0].title!,
+          //                   dateTime: DateFormat.jm().format(TextData(
+          //                       newsModel.post!.items![0].datePublished!)))));
+          //         },
+          //         child: Padding(
+          //           padding: EdgeInsets.all(8.w),
+          //           child: ClipRRect(
+          //             borderRadius: BorderRadius.circular(10.r),
+          //             child: Container(
+          //               height: 230.h,
+          //               width: double.maxFinite,
+          //               child: Stack(children: [
+          //                 Container(
+          //                     height: 230.h,
+          //                     width: double.maxFinite,
+          //                     child: Image.network(
+          //                       newsModel.post!.items![0].image!,
+          //                       fit: BoxFit.cover,
+          //                     )),
+          //                 Align(
+          //                     alignment: Alignment.bottomCenter,
+          //                     child: Container(
+          //                       height: 80.h,
+          //                       width: double.maxFinite,
+          //                       decoration: BoxDecoration(
+          //                           color: Colors.black.withOpacity(0.7)),
+          //                       child: Padding(
+          //                         padding: EdgeInsets.symmetric(
+          //                             horizontal: 10.w, vertical: 10.h),
+          //                         child: Column(
+          //                           mainAxisAlignment:
+          //                               MainAxisAlignment.spaceBetween,
+          //                           crossAxisAlignment:
+          //                               CrossAxisAlignment.start,
+          //                           children: [
+          //                             Text(
+          //                               newsModel.post!.items![0].title
+          //                                   .toString(),
+          //                               style: TextStyle(
+          //                                   fontSize: 12.sp,
+          //                                   color: Colors.white,
+          //                                   fontWeight: FontWeight.bold),
+          //                             ),
+          //                             Row(
+          //                               children: [
+          //                                 Text(
+          //                                   DateFormat.jm().format(TextData(
+          //                                       newsModel.post!.items![0]
+          //                                           .datePublished!)),
+          //                                   style: TextStyle(
+          //                                     fontSize: 10.sp,
+          //                                     color: Colors.grey,
+          //                                   ),
+          //                                 ),
+          //                                 SizedBox(
+          //                                   width: 5.w,
+          //                                 ),
+          //                                 Text(
+          //                                   DateFormat.yMMMMd().format(
+          //                                     TextData(newsModel.post!.items![0]
+          //                                         .datePublished!),
+          //                                   ),
+          //                                   style: TextStyle(
+          //                                     fontSize: 10.sp,
+          //                                     color: Colors.grey,
+          //                                   ),
+          //                                 ),
+          //                               ],
+          //                             ),
+          //                           ],
+          //                         ),
+          //                       ),
+          //                     ))
+          //               ]),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          // newsModel.loading
+          //     ? Container(
+          //         color: Colors.grey,
+          //       )
+          //     : Row(
+          //         children: [
+          //           Expanded(
+          //             child: GestureDetector(
+          //               onTap: () {
+          //                 Navigator.of(context).push(MaterialPageRoute(
+          //                     builder: (builder) => NewsDetailScreen(
+          //                         dataDate: DateFormat.yMMMMd().format(
+          //                           TextData(newsModel
+          //                               .post!.items![1].datePublished!),
+          //                         ),
+          //                         bodyText:
+          //                             newsModel.post!.items![1].contentText!,
+          //                         imgUrl: newsModel.post!.items![1].image!,
+          //                         titleText: newsModel.post!.items![1].title!,
+          //                         dateTime: DateFormat.jm().format(
+          //                           TextData(
+          //                             newsModel.post!.items![1].datePublished!,
+          //                           ),
+          //                         ))));
+          //               },
+          //               child: Padding(
+          //                 padding: EdgeInsets.all(8.w),
+          //                 child: ClipRRect(
+          //                   borderRadius: BorderRadius.circular(10.r),
+          //                   child: Container(
+          //                     height: 130.h,
+          //                     width: double.maxFinite,
+          //                     child: Stack(children: [
+          //                       Container(
+          //                           height: 130.h,
+          //                           width: double.maxFinite,
+          //                           child: Image.network(
+          //                             newsModel.post!.items![1].image!,
+          //                             fit: BoxFit.fill,
+          //                           )),
+          //                       Align(
+          //                           alignment: Alignment.bottomCenter,
+          //                           child: Container(
+          //                             height: 45.h,
+          //                             width: double.maxFinite,
+          //                             decoration: BoxDecoration(
+          //                                 color: Colors.black.withOpacity(0.7)),
+          //                             child: Column(
+          //                               mainAxisAlignment:
+          //                                   MainAxisAlignment.spaceBetween,
+          //                               crossAxisAlignment:
+          //                                   CrossAxisAlignment.start,
+          //                               children: [
+          //                                 Padding(
+          //                                   padding: const EdgeInsets.all(5.0),
+          //                                   child: Container(
+          //                                     height: 20.h,
+          //                                     child: SingleChildScrollView(
+          //                                       child: Center(
+          //                                         child: Text(
+          //                                           newsModel
+          //                                               .post!.items![1].title
+          //                                               .toString(),
+          //                                           style: TextStyle(
+          //                                               fontSize: 13.sp,
+          //                                               color: Colors.white,
+          //                                               fontWeight:
+          //                                                   FontWeight.w600),
+          //                                           maxLines: 2,
+          //                                         ),
+          //                                       ),
+          //                                       scrollDirection:
+          //                                           Axis.horizontal,
+          //                                     ),
+          //                                   ),
+          //                                 ),
+          //                                 Padding(
+          //                                     padding: const EdgeInsets.only(
+          //                                         left: 5.0, bottom: 5),
+          //                                     child: Row(
+          //                                       children: [
+          //                                         Text(
+          //                                           DateFormat.jm().format(
+          //                                               TextData(newsModel
+          //                                                   .post!
+          //                                                   .items![1]
+          //                                                   .datePublished!)),
+          //                                           style: TextStyle(
+          //                                             fontSize: 10.sp,
+          //                                             color: Colors.grey,
+          //                                           ),
+          //                                         ),
+          //                                         SizedBox(
+          //                                           width: 5.w,
+          //                                         ),
+          //                                         Text(
+          //                                           DateFormat.yMMMMd().format(
+          //                                             TextData(newsModel
+          //                                                 .post!
+          //                                                 .items![1]
+          //                                                 .datePublished!),
+          //                                           ),
+          //                                           style: TextStyle(
+          //                                             fontSize: 10.sp,
+          //                                             color: Colors.grey,
+          //                                           ),
+          //                                         ),
+          //                                       ],
+          //                                     )),
+          //                               ],
+          //                             ),
+          //                           ))
+          //                     ]),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //           Expanded(
+          //             child: GestureDetector(
+          //               onTap: () {
+          //                 Navigator.of(context).push(MaterialPageRoute(
+          //                     builder: (builder) => NewsDetailScreen(
+          //                         dataDate: DateFormat.yMMMMd().format(
+          //                           TextData(newsModel
+          //                               .post!.items![2].datePublished!),
+          //                         ),
+          //                         bodyText:
+          //                             newsModel.post!.items![2].contentText!,
+          //                         imgUrl: newsModel.post!.items![2].image!,
+          //                         titleText: newsModel.post!.items![2].title!,
+          //                         dateTime: DateFormat.jm().format(TextData(
+          //                             newsModel
+          //                                 .post!.items![2].datePublished!)))));
+          //               },
+          //               child: Padding(
+          //                 padding: EdgeInsets.all(8.w),
+          //                 child: ClipRRect(
+          //                   borderRadius: BorderRadius.circular(10.r),
+          //                   child: Container(
+          //                     height: 130.h,
+          //                     width: double.maxFinite,
+          //                     child: Stack(children: [
+          //                       Container(
+          //                           height: 130.h,
+          //                           width: double.maxFinite,
+          //                           child: Image.network(
+          //                             newsModel.post!.items![2].image!,
+          //                             fit: BoxFit.fill,
+          //                           )),
+          //                       Align(
+          //                           alignment: Alignment.bottomCenter,
+          //                           child: Container(
+          //                             height: 45.h,
+          //                             width: double.maxFinite,
+          //                             decoration: BoxDecoration(
+          //                                 color: Colors.black.withOpacity(0.7)),
+          //                             child: Column(
+          //                               mainAxisAlignment:
+          //                                   MainAxisAlignment.spaceBetween,
+          //                               crossAxisAlignment:
+          //                                   CrossAxisAlignment.start,
+          //                               children: [
+          //                                 Padding(
+          //                                   padding: const EdgeInsets.all(5.0),
+          //                                   child: Container(
+          //                                     height: 20.h,
+          //                                     child: SingleChildScrollView(
+          //                                       child: Center(
+          //                                         child: Text(
+          //                                           newsModel
+          //                                               .post!.items![2].title
+          //                                               .toString(),
+          //                                           style: TextStyle(
+          //                                               fontSize: 13.sp,
+          //                                               color: Colors.white,
+          //                                               fontWeight:
+          //                                                   FontWeight.w600),
+          //                                           maxLines: 2,
+          //                                         ),
+          //                                       ),
+          //                                       scrollDirection:
+          //                                           Axis.horizontal,
+          //                                     ),
+          //                                   ),
+          //                                 ),
+          //                                 Padding(
+          //                                     padding: const EdgeInsets.only(
+          //                                         left: 5.0, bottom: 5),
+          //                                     child: Row(
+          //                                       children: [
+          //                                         Text(
+          //                                           DateFormat.jm().format(
+          //                                               TextData(newsModel
+          //                                                   .post!
+          //                                                   .items![2]
+          //                                                   .datePublished!)),
+          //                                           style: TextStyle(
+          //                                             fontSize: 10.sp,
+          //                                             color: Colors.grey,
+          //                                           ),
+          //                                         ),
+          //                                         SizedBox(
+          //                                           width: 5.w,
+          //                                         ),
+          //                                         Text(
+          //                                           DateFormat.yMMMMd().format(
+          //                                             TextData(newsModel
+          //                                                 .post!
+          //                                                 .items![2]
+          //                                                 .datePublished!),
+          //                                           ),
+          //                                           style: TextStyle(
+          //                                             fontSize: 10.sp,
+          //                                             color: Colors.grey,
+          //                                           ),
+          //                                         ),
+          //                                       ],
+          //                                     )),
+          //                               ],
+          //                             ),
+          //                           ))
+          //                     ]),
+          //                   ),
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //
+          
           Padding(
             padding: EdgeInsets.all(8.w),
             child: Row(
